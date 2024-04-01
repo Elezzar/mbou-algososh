@@ -1,0 +1,33 @@
+.containerHeadTail {
+  display: grid;
+  grid-template-columns: 204px 175px 175px 175px 175px;
+  column-gap: 12px;
+  width: 952px;
+  margin: 0 auto;
+}
+
+.containerIndex {
+  display: grid;
+  grid-template-columns: 204px 362px 362px;
+  column-gap: 12px;
+  width: 952px;
+  margin: 12px auto 0;
+}
+
+.list {
+  margin: 120px 0 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  column-gap: 16px;
+}
+
+.item {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 16px;
+}
