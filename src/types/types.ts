@@ -59,7 +59,8 @@ export type TLoaderListState = {
 export type TButtonListState = {
   addElementButton: boolean;
   addIndexElementButton: boolean;
-  deleteElementButton: boolean;
+  deleteHeadTailElementButton: boolean;
+  deleteIndexElementButton: boolean;
 }
 
 export enum SortMethod {

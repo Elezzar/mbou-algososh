@@ -35,7 +35,8 @@ export const ListPage: React.FC = () => {
     const [buttonState, setButtonState] = useState<TButtonListState>({
       addElementButton: true,
       addIndexElementButton: true,
-      deleteElementButton: true
+      deleteHeadTailElementButton: true,
+      deleteIndexElementButton: true,
     });
     const [loaderState, setLoaderState] = useState<TLoaderListState>({
       addHeadElement: false,
@@ -46,13 +47,16 @@ export const ListPage: React.FC = () => {
       deleteIndexElement: false
     });
 
+    const buttonsEnabled = list.toArray().length > 0 && buttonState.deleteHeadTailElementButton;
+
     useEffect(() =>{
       const value = inputValue.trim().length === 0;
       setButtonState((prevLoaders) => ({...prevLoaders, addElementButton: (value)}));
       const arrayLength = list.toArray().length;
       const validation = parseInt(indexValue) >= 0 && parseInt(indexValue) <= arrayLength - 1;
       setButtonState((prevLoaders) => ({ ...prevLoaders, addIndexElementButton: (!validation || value) }));
-      setButtonState((prevLoaders) => ({ ...prevLoaders, deleteElementButton: (arrayLength !== 0 && !validation) }));
+      setButtonState((prevLoaders) => ({ ...prevLoaders, deleteHeadTailElementButton: (buttonsEnabled) }));
+      setButtonState((prevLoaders) => ({ ...prevLoaders, deleteIndexElementButton: (arrayLength !== 0 && !validation) }));
     }, [inputValue, indexValue, list]);
 
     const updateArray = (newArray: LinkedList<TListElement>, updates: {[key: string]: boolean}) => {
@@ -311,14 +315,14 @@ export const ListPage: React.FC = () => {
             <Button 
               text="Удалить из head"
               onClick={deleteHeadElement}
-              disabled={buttonState.deleteElementButton}
+              disabled={buttonState.deleteHeadTailElementButton}
               isLoader={loaderState.deleteHeadElement}
               linkedList="small"
             />
             <Button 
               text="Удалить из tail"
               onClick={deleteTailElement}
-              disabled={buttonState.deleteElementButton}
+              disabled={buttonState.deleteHeadTailElementButton}
               isLoader={loaderState.deleteTailElement}
               linkedList="small"
             />
@@ -343,7 +347,7 @@ export const ListPage: React.FC = () => {
             <Button 
               text="Удалить по индексу"
               onClick={deleteElementByIndex}
-              disabled={buttonState.deleteElementButton}
+              disabled={buttonState.deleteIndexElementButton}
               isLoader={loaderState.deleteIndexElement}
             />
           </div>

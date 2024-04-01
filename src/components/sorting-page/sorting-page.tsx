@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Style from "./sorting-page.module.css";
 
@@ -109,6 +109,10 @@ export const SortingPage: React.FC = () => {
     }
     setLoading(false);
   }
+
+  useEffect(() => {
+    getRandomArray();
+  }, []);
 
 
   return (
