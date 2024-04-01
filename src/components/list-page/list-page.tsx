@@ -48,7 +48,7 @@ export const ListPage: React.FC = () => {
     });
 
     const buttonsEnabled = list.toArray().length > 0 && buttonState.deleteHeadTailElementButton;
-
+    
     useEffect(() =>{
       const value = inputValue.trim().length === 0;
       setButtonState((prevLoaders) => ({...prevLoaders, addElementButton: (value)}));
@@ -315,14 +315,14 @@ export const ListPage: React.FC = () => {
             <Button 
               text="Удалить из head"
               onClick={deleteHeadElement}
-              disabled={buttonState.deleteHeadTailElementButton}
+              disabled={!buttonsEnabled}
               isLoader={loaderState.deleteHeadElement}
               linkedList="small"
             />
             <Button 
               text="Удалить из tail"
               onClick={deleteTailElement}
-              disabled={buttonState.deleteHeadTailElementButton}
+              disabled={!buttonsEnabled}
               isLoader={loaderState.deleteTailElement}
               linkedList="small"
             />
