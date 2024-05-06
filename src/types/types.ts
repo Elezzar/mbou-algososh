@@ -2,8 +2,10 @@ import { ElementStates } from "./element-states";
 
 export type TCharArray = {
   string: string;
-  state?: "loading" | "load" | undefined
+  state?: ElementStates.Changing | ElementStates.Modified | ElementStates.Default
 }
+
+//попробовать оставить просто ElementStates
 
 export type TRandomNumberArray = {
   minLength: number;

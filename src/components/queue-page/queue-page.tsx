@@ -124,6 +124,7 @@ export const QueuePage: React.FC = () => {
               maxLength={4}
               isLimitText={true}
               onChange={handleInputChange}
+              data-test="input"
             />
             <Button 
               text="Добавить"
@@ -131,18 +132,21 @@ export const QueuePage: React.FC = () => {
               onClick={addQueueElement}
               disabled={tailElementIndex === 6 || buttonState.addElementButton}
               isLoader={loaderState.addElementButton}
+              data-test="button"
             />
             <Button 
               text="Удалить"
               onClick={deleteQueueElement}
               disabled={buttonState.deleteElementButton}
               isLoader={loaderState.deleteElementButton}
+              data-test="button"
             />
           </div>
           <Button 
             text="Очистить"
             onClick={clearQueue}
             disabled={buttonState.clearListButton}
+            data-test="button"
           />
         </form>
         <ul className={Style.list}>

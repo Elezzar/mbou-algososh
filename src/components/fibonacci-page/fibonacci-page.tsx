@@ -45,6 +45,7 @@ export const FibonacciPage: React.FC = () => {
             max={19}
             value={inputValue === 0 ? "" : inputValue}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(parseInt(e.target.value))}
+            data-test="input"
           />
           <Button 
             style={{width: 300}}
@@ -52,6 +53,7 @@ export const FibonacciPage: React.FC = () => {
             type="submit"
             isLoader={loading}
             disabled={!inputValue || inputValue > 19}
+            data-test="submit"
           />
         </form>
         <ul className={Style.list}>

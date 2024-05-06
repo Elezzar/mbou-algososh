@@ -3,7 +3,6 @@ import { useState, FormEventHandler, useEffect, useCallback, Dispatch } from "re
 import Style from "./string.module.css";
 
 import { TCharArray } from "../../types/types";
-import { ElementStates } from "../../types/element-states";
 import { reverseCharArray } from "../../utils/reverseCharArray/reverseCharArray";
 
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
@@ -51,21 +50,21 @@ export const StringComponent: React.FC = () => {
             isLimitText={true}
             value={inputValue}
             onChange={handleInputChange}
+            data-test="input"
           />
           <Button
             text="Развернуть"
             type="submit"
             isLoader={loading}
             disabled={inputValue === ""}
+            data-test="submit"
           />
         </form>
         <ul className={Style.list}>
           {string && string.map((letter , index) => (
             <li key={index} className={Style.item}>
               <Circle key={index} letter ={letter.string} 
-                state={(letter.state === "loading") ? ElementStates.Changing 
-                  : (letter.state === "load") ? ElementStates.Modified 
-                  : ElementStates.Default} 
+                state={letter.state} 
               />
             </li>
           ))}

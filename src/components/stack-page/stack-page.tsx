@@ -57,7 +57,7 @@ export const StackPage: React.FC = () => {
     await setDelay(SHORT_DELAY_IN_MS);
 
     setStackElement((prevElement) => prevElement.map((element) => 
-    ({...element, color: false})));
+    ({...element, state: false})));
 
     setInputValue("");
 
@@ -84,6 +84,7 @@ export const StackPage: React.FC = () => {
               maxLength={4}
               isLimitText={true}
               onChange={handleInputChange}
+              data-test="input"
             />
             <Button 
               text="Добавить"
@@ -91,18 +92,21 @@ export const StackPage: React.FC = () => {
               onClick={() => handleButtonClick("addElementButton")}
               disabled={buttonState.addElementButton}
               isLoader={loaderState.addElementButton}
+              data-test="button"
             />
             <Button 
               text="Удалить"
               onClick={() => handleButtonClick("deleteElementButton")}
               disabled={buttonState.deleteElementButton}
               isLoader={loaderState.deleteElementButton}
+              data-test="button"
             />
           </div>
           <Button 
             text="Очистить"
             onClick={() => handleButtonClick("clearListButton")}
             disabled={buttonState.clearListButton}
+            data-test="button"
           />
         </form>
         <ul className={Style.list}>
