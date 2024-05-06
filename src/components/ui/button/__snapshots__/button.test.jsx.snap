@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Заблокированная кнопка отрисовывается корректно 1`] = `
+<button
+  className="text text_type_button text_color_primary button undefined false "
+  disabled={true}
+  type="button"
+>
+  <p
+    className="text undefined"
+  />
+</button>
+`;
+
+exports[`Button Кнопка без текста отрисовывается корректно 1`] = `
+<button
+  className="text text_type_button text_color_primary button undefined false "
+  type="button"
+>
+  <p
+    className="text undefined"
+  />
+</button>
+`;
+
+exports[`Button Кнопка с индикатором загрузки отрисовывается корректно 1`] = `
+<button
+  className="text text_type_button text_color_primary button undefined loader "
+  disabled={true}
+  type="button"
+>
+  <img
+    alt="Загрузка."
+    className="loader_icon"
+    src="loader.svg"
+  />
+</button>
+`;
+
+exports[`Button Кнопка с текстом отрисовывается корректно 1`] = `
+<button
+  className="text text_type_button text_color_primary button undefined false "
+  type="button"
+>
+  <p
+    className="text undefined"
+  >
+    test
+  </p>
+</button>
+`;

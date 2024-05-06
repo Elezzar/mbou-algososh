@@ -57,7 +57,7 @@ export const ListPage: React.FC = () => {
       setButtonState((prevLoaders) => ({ ...prevLoaders, addIndexElementButton: (!validation || value) }));
       setButtonState((prevLoaders) => ({ ...prevLoaders, deleteHeadTailElementButton: (buttonsEnabled) }));
       setButtonState((prevLoaders) => ({ ...prevLoaders, deleteIndexElementButton: (arrayLength !== 0 && !validation) }));
-    }, [inputValue, indexValue, list]);
+    }, [inputValue, indexValue, list, buttonsEnabled]);
 
     const updateArray = (newArray: LinkedList<TListElement>, updates: {[key: string]: boolean}) => {
       const updatedArray = new LinkedList<TListElement>(
@@ -297,6 +297,7 @@ export const ListPage: React.FC = () => {
               maxLength={4}
               isLimitText={true}
               onChange={handleInputValueChange}
+              data-test="input"
             />
             <Button 
               text="Добавить в head"
@@ -304,6 +305,7 @@ export const ListPage: React.FC = () => {
               disabled={buttonState.addElementButton}
               isLoader={loaderState.addHeadElement}
               linkedList="small"
+              data-test="button"
             />
             <Button 
               text="Добавить в tail"
@@ -311,6 +313,7 @@ export const ListPage: React.FC = () => {
               disabled={buttonState.addElementButton}
               isLoader={loaderState.addTailElement}
               linkedList="small"
+              data-test="button"
             />
             <Button 
               text="Удалить из head"
@@ -318,6 +321,7 @@ export const ListPage: React.FC = () => {
               disabled={!buttonsEnabled}
               isLoader={loaderState.deleteHeadElement}
               linkedList="small"
+              data-test="button"
             />
             <Button 
               text="Удалить из tail"
@@ -325,6 +329,7 @@ export const ListPage: React.FC = () => {
               disabled={!buttonsEnabled}
               isLoader={loaderState.deleteTailElement}
               linkedList="small"
+              data-test="button"
             />
           </div>
           <div className={Style.containerIndex}>
@@ -336,6 +341,7 @@ export const ListPage: React.FC = () => {
               min={0}
               max={list.toArray().length}
               onChange={handleInputIndexChange}
+              data-test="index_input"
             />
             <Button 
               text="Добавить по индексу"
@@ -343,12 +349,14 @@ export const ListPage: React.FC = () => {
               disabled={buttonState.addIndexElementButton}
               isLoader={loaderState.addIndexElement}
               linkedList="big"
+              data-test="button"
             />
             <Button 
               text="Удалить по индексу"
               onClick={deleteElementByIndex}
               disabled={buttonState.deleteIndexElementButton}
               isLoader={loaderState.deleteIndexElement}
+              data-test="button"
             />
           </div>
         </form>
