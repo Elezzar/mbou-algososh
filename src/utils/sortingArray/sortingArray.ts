@@ -11,7 +11,11 @@ const compareItems = (direction: Direction, firstItem: number, secondItem: numbe
   return direction === Direction.Ascending ? firstItem > secondItem : firstItem < secondItem;
 };
 
-export const bubbleSort = async (array: TSorterItem[], direction: Direction, setArray: React.Dispatch<React.SetStateAction<TSorterItem[]>>): Promise<void> => {
+export const bubbleSort = async (
+  array: TSorterItem[], 
+  direction: Direction, 
+  setArray: React.Dispatch<React.SetStateAction<TSorterItem[]>>
+): Promise<void> => {
   let arrayLength = array.length;
   for (let i = 0; i < arrayLength; i++) {
     for (let j = 0; j < arrayLength - i - 1; j++) {
@@ -32,7 +36,11 @@ export const bubbleSort = async (array: TSorterItem[], direction: Direction, set
   }
 }
 
-export const selectionSort = async (array: TSorterItem[], direction: Direction, setArray: React.Dispatch<React.SetStateAction<TSorterItem[]>>): Promise<void> => {
+export const selectionSort = async (
+  array: TSorterItem[], 
+  direction: Direction, 
+  setArray: React.Dispatch<React.SetStateAction<TSorterItem[]>>
+): Promise<void> => {
   let arrayLength = array.length;
   for (let i = 0; i < arrayLength - 1; i++) {
     let elementIndex = i;
@@ -43,9 +51,9 @@ export const selectionSort = async (array: TSorterItem[], direction: Direction, 
       setArray([...array]);
       await setDelay(SHORT_DELAY_IN_MS);
 
-      if (j > i +1) array[j - 1].state = ElementStates.Default;
+      if (j > i + 1) array[j - 1].state = ElementStates.Default;
 
-      if (compareItems(direction, array[j].value, array[elementIndex].value)) {
+      if (compareItems(direction, array[elementIndex].value, array[j].value )) {
         array[elementIndex].state = ElementStates.Default;
         elementIndex = j;
         array[elementIndex].state = ElementStates.Changing;

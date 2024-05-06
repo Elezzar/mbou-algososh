@@ -23,6 +23,7 @@ describe('Алгоритмы сортировки', () => {
         {direction: Direction.Descending, arr: [1, 3, 2], sorted: [3, 2, 1], state: ElementStates.Modified},
       ])('для массива %s работает корректно', async ({direction, arr, sorted, state}) => {
         const array = createArray(arr);
+
         await func(array, direction, mockSetArray);
 
         const result = array.map(item => item.value);
@@ -30,10 +31,11 @@ describe('Алгоритмы сортировки', () => {
         
         if (arr.length > 0) {
           expect(array[0].state).toEqual(state);
-      }})
+        }
+      })
     }) 
   }
 
   testSorting(bubbleSort, 'Bubble');
-  testSorting(selectionSort, 'Selection'); 
-}) 
+  testSorting(selectionSort, 'Selection');  
+})  
